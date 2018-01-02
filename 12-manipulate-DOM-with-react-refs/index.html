@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>11-use-class-components-with-react</title>
+  <title>12-manipulate-DOM-with-react-refs</title>
 </head>
 <body>
   <div id="root"></div>
@@ -13,9 +13,12 @@
   <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
   <script type="text/babel">
   class Counter extends React.Component {
-    state = {count: 0}
-
-    handleClick = () => {
+    constructor(...args) {
+      super(..args)
+      this.state = {count: 0}
+      this.handleClick = this.handleClick.bind(this)
+    }
+    handleClick() {
       this.setState(({count}) => ({
         count: count + 1,
       }))
@@ -23,12 +26,9 @@
     
     render() {
       return (
-        <div>
-          <p>
-            <button onClick={this.handleClick}>Increment</button>
-          </p>
-          <h3>{this.state.count}</h3>
-        </div>
+        <button onClick={this.handleClick}>
+            {this.state.count}
+        </button>
       )
     }
   }

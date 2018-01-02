@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rerender a React Application</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+  <script type="text/babel">
+  const rootElement = document.getElementById('root')
+  function tick() {
+    const time = new Date().toLocaleTimeString()
+    // coded in the vanilla js way - updates entire DOM structure of <div>
+    // causing us to lose focus on inputs every second
+    // const element = `
+    //   <div>
+    //     It is <input value=${time} />
+    //     It is <input value=${time} />
+    //   </div>
+    // `
+    // rootElement.innerHTML = element
+    const element = (
+      <div>
+        It is <input value={time} />
+        It is <input value={time} />
+      </div>
+    )
+    ReactDOM.render(element, rootElement)
+  }
+  // Not sure why we're calling it once here first
+  tick()
+  setInterval(tick, 1000)
+    
+  </script>
+</body>
+</html>

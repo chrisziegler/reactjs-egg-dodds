@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clock</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/javascript">
+  function tick() {
+    const time = new Date().toLocaleTimeString()
+    const el = document.querySelector('#root')
+    el.textContent = time
+  }
+  setInterval(tick, 1000)
+  </script> 
+</body>
+</html>
