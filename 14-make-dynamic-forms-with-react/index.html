@@ -19,11 +19,12 @@
       event.preventDefault()
       const value = event.target.elements.username.value
       const error = this.props.getErrorMessage(value)
-      if (error) {
-        alert(`error: ${error}`)
-      } else {
-        alert(`success: ${value}`)
-      }
+      /* added disable attritute to Submit button instead'*/
+      // if (error) {
+      //   alert(`error: ${error}`)
+      // } else {
+      //   alert(`success: ${value}`)
+      // }
     }
 
     handleChange = event => {
